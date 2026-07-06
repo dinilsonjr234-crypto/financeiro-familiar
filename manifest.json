@@ -1,0 +1,26 @@
+{
+  "name": "Controle Financeiro Familiar",
+  "short_name": "Financeiro",
+  "description": "Acompanhe receitas, despesas, metas e orçamento da família.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f4f6f8",
+  "theme_color": "#138a5c",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
