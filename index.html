@@ -59,7 +59,24 @@
       }
     }
     // Fallback: tenta o método original
-    if (window.__originalSaveAs) window.__originalSaveAs(blob, filename);
+    if (window.__originalSaveAs) { window.__originalSaveAs(blob, filename); return; }
+
+    // Fallback para navegador/PWA (sem AndroidBridge): baixa via <a download>.
+    // O jsPDF usa window.saveAs para salvar o PDF; sem este fallback nada acontecia.
+    try {
+      const b = (blob instanceof Blob) ? blob : new Blob([blob]);
+      const url = URL.createObjectURL(b);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename || 'arquivo';
+      a.rel = 'noopener';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function () { URL.revokeObjectURL(url); }, 40000);
+    } catch (err) {
+      console.error('Fallback de download falhou:', err);
+    }
   };
 
   // ---- 2. Intercepta cliques em <a download> (usado pelo backup criar) ----

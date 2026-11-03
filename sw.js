@@ -1,7 +1,7 @@
 // Service Worker - Controle Financeiro Familiar
 // Faz cache do app shell para permitir uso offline.
 
-const CACHE_NAME = 'financeiro-familiar-v1';
+const CACHE_NAME = 'financeiro-familiar-v2';
 const APP_SHELL = [
   './',
   './index.html',
